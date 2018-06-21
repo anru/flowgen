@@ -35,8 +35,8 @@ const readableDef = beautify(generatedFlowdef);
 
 Standard usage (prints result to stdout):
 ```
-npm i -g ts2gen
-ts2gen lodash.d.ts
+npm i -g ts2flow
+ts2flow lodash.d.ts
 ```
 
 ### Options
