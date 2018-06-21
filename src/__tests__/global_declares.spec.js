@@ -11,5 +11,3 @@ declare interface ICustomMessage {
 `;
   expect(beautify(compiler.compileDefinitionString(ts))).toMatchSnapshot();
 });
-
-

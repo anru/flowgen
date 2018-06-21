@@ -60,9 +60,9 @@ export const interfaceDeclaration = (nodeName: string, node: RawNode) => {
 
   const type = node.heritageClauses ? "type" : "interface";
 
-  let str = `declare ${type} ${nodeName}${printers.common.generics(node.typeParameters)} ${
-    type === "type" ? "= " : ""
-  }${interfaceType(node)} ${heritage}`;
+  let str = `declare ${type} ${nodeName}${printers.common.generics(
+    node.typeParameters,
+  )} ${type === "type" ? "= " : ""}${interfaceType(node)} ${heritage}`;
 
   return str;
 };

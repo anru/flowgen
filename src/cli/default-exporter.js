@@ -7,9 +7,9 @@ import fs from "fs";
  */
 export default function exportDefault(fileName: ?string, output: string) {
   if (fileName) {
-    fs.writeSync(fs.openSync(fileName, 'a'), output);
+    fs.writeSync(fs.openSync(fileName, "a"), output);
   } else {
-    process.stdout.write(output)
-    process.stdout.write('\n')
+    process.stdout.write(output);
+    process.stdout.write("\n");
   }
 }

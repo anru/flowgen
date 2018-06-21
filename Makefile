@@ -16,7 +16,7 @@ watch: lib
 
 .PHONY: prettify
 prettify:
-	prettier --write \"{src,types}/**/*.js\"
+	prettier --write "{src,types}/**/*.js"
 
 .PHONY: clean
 clean:

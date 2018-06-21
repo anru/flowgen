@@ -18,36 +18,33 @@ type RunnerOptions = {
 
 export default (options: RunnerOptions) => {
   const compile = (compiler, sourcePath = null) => {
-    const sourcePathDesc = sourcePath || '<stdin>'
+    const sourcePathDesc = sourcePath || "<stdin>";
 
     try {
       const intro = meta(sourcePathDesc, options.version);
       const flowDefinitions = compiler();
 
       // Write the output to disk
-      writeFile(
-        options.out,
-        beautify(intro + flowDefinitions),
-      );
+      writeFile(options.out, beautify(intro + flowDefinitions));
     } catch (e) {
       console.error("Parsing", sourcePathDesc, "failed");
       console.error(e);
     }
-  }
+  };
 
   // No real reason to return an object here instead of combining
   // the compile function into the wrapper, but I like the API it produces.
   return {
     compileStdin: () => {
-      console.error('stdrd')
+      console.error("stdrd");
       return getStdin().then(source => {
         if (source) {
-          console.error('compile stdin')
-          compile(() => compiler.compileDefinitionString(source))
+          console.error("compile stdin");
+          compile(() => compiler.compileDefinitionString(source));
         } else {
-          console.error('no stdin')
+          console.error("no stdin");
         }
-      })
+      });
     },
     compile: (files: Array<string>) => {
       // Iterate all the files the user has passed in
@@ -58,18 +55,15 @@ export default (options: RunnerOptions) => {
         // Let the user know what's going on
         if (files.length > 3) {
           // If we're compiling a lot of files, show more stats
-          const progress = Math.round(index / files.length * 100);
+          const progress = Math.round((index / files.length) * 100);
           process.stderr.write("\r\x1b[K");
           process.stderr.write(progress + "% | " + moduleName);
         } else {
-          process.stderr.write(`Parsing ${moduleName}\n`)
+          process.stderr.write(`Parsing ${moduleName}\n`);
         }
 
         // Produce the flow library content
-        compile(
-          () => compiler.compileDefinitionFile(file),
-          file
-        )
+        compile(() => compiler.compileDefinitionFile(file), file);
       });
     },
   };
