@@ -1,32 +1,44 @@
 #! /usr/bin/env node
 /* @flow */
-import { recursiveWalkTree } from "../parse";
 import runner from "./runner";
 import { version } from "../../package.json";
+import yargs from 'yargs'
 
-import program from "commander";
+const fail = (e) => {
+  console.error(e)
+  process.exitCode = 1
+}
 
-program
+process.on('uncaughtException', fail)
+process.on('unhandledRejection', fail)
+
+const desc = `Generates and prints flow definition of corresponding typescript files. \
+Also tries to read ts source from stdin and process it as well`
+
+const argv = yargs
   .version(version)
-  .option(
-    "-o --output-file [outputFile]",
-    "name for ouput file, defaults to export.flow.js",
-    "export.flow.js",
-  )
-  .option("--flow-typed-format", "format outut for flow-typed")
-  .option("--compile-tests", "compile any <filename>-tests.ts files found")
-  .arguments("[files...]")
-  .action((files, options) => {
-    runner({
-      flowTypedFormat: options.flowTypedFormat,
-      compileTests: options.compileTests,
-      out: options.outputFile,
-      version,
-    }).compile(files);
+  .usage('$0 [-o outputFile] [files]', desc)
+  .option('o', {
+    alias: 'output-file',
+    demandOption: false,
+    describe: 'path to output file, if not specified writes to stdout',
+    type: 'string'
+  })
+  .help()
+  .example('$0 foo.ts', 'prints result flow definitions to stdout')
+  .argv
+
+console.error(JSON.stringify(argv))
+
+function main() {
+  const compiler = runner({
+    out: argv.o,
+    version,
   });
 
-program.parse(process.argv);
-
-if (!process.argv.slice(2).length) {
-  program.outputHelp();
+  compiler.compileStdin().then(() => {
+    compiler.compile(argv._)
+  })
 }
+
+main()

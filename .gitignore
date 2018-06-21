@@ -1,4 +1,5 @@
 node_modules
+*.stub
 lib
 tester/node_modules
 .idea

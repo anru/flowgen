@@ -188,7 +188,7 @@ export const printType = (type: RawNode) => {
   }
 
   const output = `"NO PRINT IMPLEMENTED: ${type.kind}"`;
-  console.log(output);
+  console.error(output);
   return output;
 };
 

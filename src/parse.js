@@ -29,7 +29,7 @@ export const parseNameFromNode = (node: RawNode) => {
     return declarations;
   }
 
-  console.log("INVALID NAME");
+  console.error("INVALID NAME");
   return "INVALID NAME REF";
 };
 
@@ -130,7 +130,7 @@ const collectNode = (node: RawNode, context: Node, factory: Factory) => {
       break;
 
     default:
-      console.log("Missing node parse", ts.SyntaxKind[node.kind]);
+      console.error("Missing node parse", ts.SyntaxKind[node.kind]);
   }
 };
 
@@ -158,5 +158,5 @@ export function getMembersFromNode(node: any) {
     return node.members;
   }
 
-  console.log("NO MEMBERS_", node);
+  console.error("NO MEMBERS_", node);
 }
