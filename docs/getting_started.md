@@ -50,4 +50,7 @@ exports[`should handle union strings 1`] = `
 `;
 ```
 
-Which I could then use as a reference for the output. You can replace the string in `ts` with whatever broken interface code you have in a new spec file and you'll have a full integration test for your changes. You can see this in commit [ccfbea](https://github.com/joarwilk/flowgen/commit/ccfbeaa189b14ee70f675601c731bf3c7cb6a88b).
+Which I could then use as a reference for the output.
+You can replace the string in `ts` with whatever broken interface code you have in a new spec file
+and you'll have a full integration test for your changes.
+You can see this in commit [ccfbea](https://github.com/joarwilk/flowgen/commit/ccfbeaa189b14ee70f675601c731bf3c7cb6a88b).

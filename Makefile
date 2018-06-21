@@ -21,3 +21,7 @@ prettify:
 .PHONY: clean
 clean:
 	rm -rf lib .lib.stub
+
+.PHONY: publish
+publish: lib
+	npm publish

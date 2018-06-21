@@ -3,6 +3,11 @@
 This is a fork of [flowgen](https://github.com/joarwilk/flowgen).
 For reasons why ts2flow have been forked from flowgen see [this](https://github.com/anru/ts2flow/commit/b0fdc19753dc601e759a9e354ed88987f803614f) commit message.
 
+## TODO
+
+1. Add PR to flowgen fixing `declare export interface` issue
+2. Make ts2flow cli tool for flowgen itself
+
 ## The state of the converter
 It's surprisingly robust and non-lossy as it stands right now,
 in big part thanks to how similar flow and typescript definition files are.

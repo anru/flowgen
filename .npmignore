@@ -1,0 +1,4 @@
+/src
+*.stub
+node_modules
+.idea
