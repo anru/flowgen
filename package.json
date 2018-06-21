@@ -1,7 +1,7 @@
 {
   "name": "ts2flow",
   "description": "Generate flowtype definition files from TypeScript",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "bin": {
     "ts2flow": "./lib/cli/index.js"
   },
