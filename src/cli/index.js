@@ -27,8 +27,6 @@ const argv = yargs
   .help()
   .example("$0 foo.ts", "prints result flow definitions to stdout").argv;
 
-console.error(JSON.stringify(argv));
-
 function main() {
   const compiler = runner({
     out: argv.o,
