@@ -36,13 +36,9 @@ export default (options: RunnerOptions) => {
   // the compile function into the wrapper, but I like the API it produces.
   return {
     compileStdin: () => {
-      console.error("stdrd");
       return getStdin().then(source => {
         if (source) {
-          console.error("compile stdin");
           compile(() => compiler.compileDefinitionString(source));
-        } else {
-          console.error("no stdin");
         }
       });
     },
