@@ -17,7 +17,7 @@ Also tries to read ts source from stdin and process it as well`;
 
 const argv = yargs
   .version(version)
-  .usage("$0 [-o outputFile] [files]", desc)
+  .usage(`$0 [-o outputFile] [files]\n\n${desc}`)
   .option("o", {
     alias: "output-file",
     demandOption: false,
